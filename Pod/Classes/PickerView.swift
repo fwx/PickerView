@@ -374,17 +374,6 @@ open class PickerView: UIView {
     
     // MARK: Life Cycle
     
-    open override func willMove(toWindow newWindow: UIWindow?) {
-        super.willMove(toWindow: newWindow)
-        
-        if let _ = newWindow {
-            NotificationCenter.default.addObserver(self, selector: #selector(PickerView.adjustCurrentSelectedAfterOrientationChanges),
-                                                            name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        } else {
-            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        }
-    }
-    
     override open func layoutSubviews() {
         super.layoutSubviews()
         
