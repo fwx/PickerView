@@ -637,6 +637,10 @@ extension PickerView: UIScrollViewDelegate {
         if let cellToHighlight = tableView.cellForRow(at: IndexPath(row: roundedRow, section: 0)) as? SimplePickerTableViewCell {
             delegate?.pickerView?(self, viewForRow: roundedRow, index: indexForRow(roundedRow), highlighted: true, reusingView: cellToHighlight.customView)
             delegate?.pickerView?(self, styleForLabel: cellToHighlight.titleLabel, highlighted: true)
+            if currentSelectedRow != roundedRow && scrollView.isTracking {
+                currentSelectedRow = roundedRow
+                delegate?.pickerView?(self, didSelectRow: currentSelectedRow, index: currentSelectedIndex)
+            }
         }
     }
     
