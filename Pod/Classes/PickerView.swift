@@ -436,6 +436,8 @@ open class PickerView: UIView {
         currentSelectedRow = row
         tableView.reloadData()
         
+        if self.numberOfRowsByDataSource == 0 { return }
+        
         repeat {
             // This line adjust the contentInset to UIEdgeInsetZero because when the PickerView are inside of a UIViewController 
             // presented by a UINavigation controller, the tableView contentInset is affected.
